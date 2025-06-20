@@ -1,6 +1,8 @@
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-
+function saveToCart(){
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 export function addToCart(productId){
   let matchingItem;
@@ -18,7 +20,7 @@ export function addToCart(productId){
       quantity: 1
     });
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+  saveToCart();
 }
 
 export function removeFromCart(productId){
@@ -30,5 +32,5 @@ export function removeFromCart(productId){
     }
   });
   cart = newCart;
-  localStorage.setItem('cart', JSON.stringify(cart));
+  saveToCart();
 }
